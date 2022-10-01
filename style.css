@@ -3,7 +3,7 @@
     padding: 0;
 }
 
-body {
+body, input {
     font-family: 'Press Start 2P','Gentium Book Plus', serif;
 }
 
@@ -13,6 +13,11 @@ body {
     margin-top: 50px;
     font-size: 20px;
     margin-bottom: 50px;
+}
+
+input {
+    width: 80%;
+    height: 25px;
 }
 
 .selection {

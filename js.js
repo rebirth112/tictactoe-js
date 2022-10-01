@@ -47,17 +47,24 @@ startButton.addEventListener("click", () => {
 })
 
 startButton.addEventListener("transitionend", () => {
+    let p1name = document.getElementById("p1name").value;
+    let p2name = document.getElementById("p2name").value;
+    if (p1name == "") {
+        p1name = "Player 1"
+    };
+    if (p2name == "") {
+        p2name = "Player 2"
+    };
     introduction.remove();
     startButton.remove();
     let newBoard = gameBoard();
-    let newGame = gameStart("X", "O");
+    let newGame = gameStart(p1name, p2name);
     newGame.turn();
 })
 
 const gameStart = (player1, player2) => {
     let turn = () => {
         let selectableBoard = document.querySelectorAll(".playGrid")
-        let gameNumber = 1;
         let count = 1;
         let result =  document.getElementById("turn");
         let a1 = document.getElementById("a1");
@@ -76,106 +83,72 @@ const gameStart = (player1, player2) => {
         function winchecker() {
             if (a1.innerHTML == a2.innerHTML && a2.innerHTML == a3.innerHTML && a1.innerHTML != "" && a2.innerHTML != "" && a3.innerHTML != "") {
                 if (a1.innerHTML == "X") {
-                    result.innerHTML = "Player 1 WIN!"
-                    gameNumber += 1
-                    summonReplay(gameNumber)
+                    result.innerHTML = player1 + " WINS!"
                 } else if (a1.innerHTML == "O") {
-                    result.innerHTML = "Player 2 WIN!"
-                    gameNumber += 1
-                    summonReplay(gameNumber)
+                    result.innerHTML = player2 + " WINS!"
                 }
             } else if (a1.innerHTML == a5.innerHTML && a5.innerHTML == a9.innerHTML && a1.innerHTML != "" && a5.innerHTML != "" && a9.innerHTML != "") {
                 if (a1.innerHTML == "X") {
-                    result.innerHTML = "Player 1 WIN!"
-                    gameNumber += 1
-                    summonReplay(gameNumber)
+                    result.innerHTML = player1 + " WINS!"
                 } else if (a1.innerHTML == "O") {
-                    result.innerHTML = "Player 2 WIN!"
-                    gameNumber += 1
-                    summonReplay(gameNumber)
+                    result.innerHTML = player2 + " WINS!"
                 }
             } else if (a1.innerHTML == a4.innerHTML && a4.innerHTML == a7.innerHTML && a1.innerHTML != "" && a4.innerHTML != "" && a7.innerHTML != "") {
                 if (a1.innerHTML == "X") {
-                    result.innerHTML = "Player 1 WIN!"
-                    gameNumber += 1
-                    summonReplay(gameNumber)
+                    result.innerHTML = player1 + " WINS!"
                 } else if (a1.innerHTML == "O") {
-                    result.innerHTML = "Player 2 WIN!"
-                    gameNumber += 1
-                    summonReplay(gameNumber)
+                    result.innerHTML = player2 + " WINS!"
                 }
             } else if (a2.innerHTML == a5.innerHTML && a5.innerHTML == a8.innerHTML && a2.innerHTML != "" && a5.innerHTML != "" && a8.innerHTML != "") {
                 if (a2.innerHTML == "X") {
-                    result.innerHTML = "Player 1 WIN!"
-                    gameNumber += 1
-                    summonReplay(gameNumber)
+                    result.innerHTML = player1 + " WINS!"
                 } else if (a2.innerHTML == "O") {
-                    result.innerHTML = "Player 2 WIN!"
-                    gameNumber += 1
-                    summonReplay(gameNumber)
+                    result.innerHTML = player2 + " WINS!"
                 }
             } else if (a3.innerHTML == a6.innerHTML && a6.innerHTML == a9.innerHTML && a3.innerHTML != "" && a6.innerHTML != "" && a9.innerHTML != "") {
                 if (a3.innerHTML == "X") {
-                    result.innerHTML = "Player 1 WIN!"
-                    gameNumber += 1
-                    summonReplay(gameNumber)
+                    result.innerHTML = player1 + " WINS!"
                 } else if (a3.innerHTML == "O") {
-                    result.innerHTML = "Player 2 WIN!"
-                    gameNumber += 1
-                    summonReplay(gameNumber)
+                    result.innerHTML = player2 + " WINS!"
                 }
             } else if (a3.innerHTML == a5.innerHTML && a5.innerHTML == a7.innerHTML && a3.innerHTML != "" && a5.innerHTML != "" && a7.innerHTML != "") {
                 if (a3.innerHTML == "X") {
-                    result.innerHTML = "Player 1 WIN!"
-                    gameNumber += 1
-                    summonReplay(gameNumber)
+                    result.innerHTML = player1 + " WINS!"
                 } else if (a3.innerHTML == "O") {
-                    result.innerHTML = "Player 2 WIN!"
-                    gameNumber += 1
-                    summonReplay(gameNumber)
+                    result.innerHTML = player2 + " WINS!"
                 } 
             } else if (a4.innerHTML == a5.innerHTML && a5.innerHTML == a6.innerHTML && a4.innerHTML != "" && a5.innerHTML != "" && a6.innerHTML != "") {
                 if (a4.innerHTML == "X") {
-                    result.innerHTML = "Player 1 WIN!"
-                    gameNumber += 1
-                    summonReplay(gameNumber)
+                    result.innerHTML = player1 + " WINS!"
                 } else if (a4.innerHTML == "O") {
-                    result.innerHTML = "Player 2 WIN!"
-                    gameNumber += 1
-                    summonReplay(gameNumber)
+                    result.innerHTML = player2 + " WINS!"
                 }
             } else if (a7.innerHTML == a8.innerHTML && a8.innerHTML == a9.innerHTML && a7.innerHTML != "" && a8.innerHTML != "" && a9.innerHTML != "") {
                 if (a7.innerHTML == "X") {
-                    result.innerHTML = "Player 1 WIN!"
-                    gameNumber += 1
-                    summonReplay(gameNumber)
+                    result.innerHTML = player1 + " WINS!"
                 } else if (a7.innerHTML == "O") {
-                    result.innerHTML = "Player 2 WIN!"
-                    gameNumber += 1
-                    summonReplay(gameNumber)
+                    result.innerHTML = player2 + " WINS!"
                 }
             } else if (count == 10) {
                 result.innerHTML = "TIE!!"
-                gameNumber += 1
-                summonReplay(gameNumber)
             } 
         } 
-        result.innerHTML = "Player 1's Turn!"
+        result.innerHTML = player1 +  "'s Turn!"
         selectableBoard.forEach(box => {
             box.addEventListener('click', function filler() {
-                if (result.innerHTML == "TIE!!" || result.innerHTML == "Player 1 WIN!" || result.innerHTML == "Player 2 WIN!") {
+                if (result.innerHTML == "TIE!!" || result.innerHTML == player1 + " WINS!" || result.innerHTML == player2 + " WINS!") {
                     false
                 } else if (count % 2 != 0 && box.innerHTML == "") {
-                    box.innerHTML = player1;
+                    box.innerHTML = "X";
                     count += 1;
-                    result.innerHTML = "Player 2's Turn!"
+                    result.innerHTML = player2 + "'s Turn!"
                     winchecker()
                     
                 }
                 else if (count % 2 == 0 && box.innerHTML == "") {
-                    box.innerHTML = player2;
+                    box.innerHTML = "O";
                     count += 1;
-                    result.innerHTML = "Player 1's Turn!"
+                    result.innerHTML = player1 + "'s Turn!"
                     winchecker()
                 }
             })
