@@ -83,7 +83,7 @@ const gameStart = (player1, player2) => {
         let replayButtonSection = document.getElementById('btn2');
         replayButton.addEventListener("click", () => {
             count = 1;
-            result.innerHTML = "";
+            result.innerHTML = player1 +  "'s Turn!";
             a1.innerHTML = "";
             a2.innerHTML = "";
             a3.innerHTML = "";
