@@ -80,76 +80,126 @@ const gameStart = (player1, player2) => {
         replayButton.id = "replay"
         replayButton.innerHTML = "Play Again!"
         replayButton.className = "begin"
+        let replayButtonSection = document.getElementById('btn2');
+        replayButton.addEventListener("click", () => {
+            count = 1;
+            result.innerHTML = "";
+            a1.innerHTML = "";
+            a2.innerHTML = "";
+            a3.innerHTML = "";
+            a4.innerHTML = "";
+            a5.innerHTML = "";
+            a6.innerHTML = "";
+            a7.innerHTML = "";
+            a8.innerHTML = "";
+            a9.innerHTML = "";
+            replayButton.remove();
+        })
         function winchecker() {
             if (a1.innerHTML == a2.innerHTML && a2.innerHTML == a3.innerHTML && a1.innerHTML != "" && a2.innerHTML != "" && a3.innerHTML != "") {
                 if (a1.innerHTML == "X") {
                     result.innerHTML = player1 + " WINS!"
+                    count = 999;
+                    replayButtonSection.appendChild(replayButton);
+
                 } else if (a1.innerHTML == "O") {
                     result.innerHTML = player2 + " WINS!"
+                    count = 999;
+                    replayButtonSection.appendChild(replayButton);
                 }
             } else if (a1.innerHTML == a5.innerHTML && a5.innerHTML == a9.innerHTML && a1.innerHTML != "" && a5.innerHTML != "" && a9.innerHTML != "") {
                 if (a1.innerHTML == "X") {
                     result.innerHTML = player1 + " WINS!"
+                    count = 999;
+                    replayButtonSection.appendChild(replayButton);
                 } else if (a1.innerHTML == "O") {
                     result.innerHTML = player2 + " WINS!"
+                    count = 999;
+                    replayButtonSection.appendChild(replayButton);
                 }
             } else if (a1.innerHTML == a4.innerHTML && a4.innerHTML == a7.innerHTML && a1.innerHTML != "" && a4.innerHTML != "" && a7.innerHTML != "") {
                 if (a1.innerHTML == "X") {
                     result.innerHTML = player1 + " WINS!"
+                    count = 999;
+                    replayButtonSection.appendChild(replayButton);
                 } else if (a1.innerHTML == "O") {
                     result.innerHTML = player2 + " WINS!"
+                    count = 999;
+                    replayButtonSection.appendChild(replayButton);
                 }
             } else if (a2.innerHTML == a5.innerHTML && a5.innerHTML == a8.innerHTML && a2.innerHTML != "" && a5.innerHTML != "" && a8.innerHTML != "") {
                 if (a2.innerHTML == "X") {
                     result.innerHTML = player1 + " WINS!"
+                    count = 999;
+                    replayButtonSection.appendChild(replayButton);
                 } else if (a2.innerHTML == "O") {
                     result.innerHTML = player2 + " WINS!"
+                    count = 999;
+                    replayButtonSection.appendChild(replayButton);
                 }
             } else if (a3.innerHTML == a6.innerHTML && a6.innerHTML == a9.innerHTML && a3.innerHTML != "" && a6.innerHTML != "" && a9.innerHTML != "") {
                 if (a3.innerHTML == "X") {
                     result.innerHTML = player1 + " WINS!"
+                    count = 999;
+                    replayButtonSection.appendChild(replayButton);
                 } else if (a3.innerHTML == "O") {
                     result.innerHTML = player2 + " WINS!"
+                    count = 999;
+                    replayButtonSection.appendChild(replayButton);
                 }
             } else if (a3.innerHTML == a5.innerHTML && a5.innerHTML == a7.innerHTML && a3.innerHTML != "" && a5.innerHTML != "" && a7.innerHTML != "") {
                 if (a3.innerHTML == "X") {
                     result.innerHTML = player1 + " WINS!"
+                    count = 999;
+                    replayButtonSection.appendChild(replayButton);
                 } else if (a3.innerHTML == "O") {
                     result.innerHTML = player2 + " WINS!"
+                    count = 999;
+                    replayButtonSection.appendChild(replayButton);
                 } 
             } else if (a4.innerHTML == a5.innerHTML && a5.innerHTML == a6.innerHTML && a4.innerHTML != "" && a5.innerHTML != "" && a6.innerHTML != "") {
                 if (a4.innerHTML == "X") {
                     result.innerHTML = player1 + " WINS!"
+                    count = 999;
+                    replayButtonSection.appendChild(replayButton);
                 } else if (a4.innerHTML == "O") {
                     result.innerHTML = player2 + " WINS!"
+                    count = 999;
+                    replayButtonSection.appendChild(replayButton);
                 }
             } else if (a7.innerHTML == a8.innerHTML && a8.innerHTML == a9.innerHTML && a7.innerHTML != "" && a8.innerHTML != "" && a9.innerHTML != "") {
                 if (a7.innerHTML == "X") {
                     result.innerHTML = player1 + " WINS!"
+                    count = 999;
+                    replayButtonSection.appendChild(replayButton);
                 } else if (a7.innerHTML == "O") {
                     result.innerHTML = player2 + " WINS!"
+                    count = 999;
+                    replayButtonSection.appendChild(replayButton);
                 }
             } else if (count == 10) {
                 result.innerHTML = "TIE!!"
+                count = 999;
+                replayButtonSection.appendChild(replayButton);
             } 
         } 
         result.innerHTML = player1 +  "'s Turn!"
         selectableBoard.forEach(box => {
             box.addEventListener('click', function filler() {
-                if (result.innerHTML == "TIE!!" || result.innerHTML == player1 + " WINS!" || result.innerHTML == player2 + " WINS!") {
-                    false
-                } else if (count % 2 != 0 && box.innerHTML == "") {
+                if (count % 2 != 0 && box.innerHTML == "" && count < 11) {
                     box.innerHTML = "X";
                     count += 1;
                     result.innerHTML = player2 + "'s Turn!"
                     winchecker()
+                    console.log(count)
                     
                 }
-                else if (count % 2 == 0 && box.innerHTML == "") {
+                else if (count % 2 == 0 && box.innerHTML == "" && count < 11) {
                     box.innerHTML = "O";
                     count += 1;
                     result.innerHTML = player1 + "'s Turn!"
                     winchecker()
+                    console.log(count)
                 }
             })
         })
